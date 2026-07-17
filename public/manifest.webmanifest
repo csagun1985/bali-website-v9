@@ -1,0 +1,19 @@
+{
+  "name": "Bali Hub 26",
+  "short_name": "Bali Hub 26",
+  "description": "ACM Group Bali 2026 staff trip hub.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fffdf7",
+  "theme_color": "#00a6b4",
+  "icons": [
+    {
+      "src": "/acm-group-logo.png",
+      "sizes": "1200x1200",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

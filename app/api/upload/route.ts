@@ -1,0 +1,3 @@
+import { getSiteUser } from "../../chatgpt-auth";
+import { getSiteEnv } from "../../platform-env";
+export async function POST(request:Request){ await getSiteUser(); const form=await request.formData(); const file=form.get("file"); if(!(file instanceof File))return new Response("File required",{status:400}); if(!file.type.startsWith("image/")||file.size>8_000_000)return new Response("Use an image under 8MB",{status:400}); const ext=(file.name.split(".").pop()||"jpg").replace(/[^a-z0-9]/gi,""); const key=`trip-assets/${crypto.randomUUID()}.${ext}`; await getSiteEnv().BUCKET.put(key,await file.arrayBuffer(),{httpMetadata:{contentType:file.type}}); const imagePath=key.split("/").map(encodeURIComponent).join("/"); return Response.json({url:`/api/images/${imagePath}`}); }
